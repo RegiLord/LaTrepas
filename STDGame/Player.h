@@ -13,7 +13,7 @@ class Player : public ImageLabel {
 private:
     float *state_handler = new float[5];
     bool entering = true;
-    float speed = 60; //pixels per second
+    float speed = 600; //pixels per second
 protected:
     PlayerState state = Idle;
 
