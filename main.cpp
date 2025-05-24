@@ -125,11 +125,6 @@ int main() {
     // }
 
     CloseWindow();
-
-    for (auto &i : TextureHandler::Handler) {
-        cout << i.filepath << " " << i.count << endl;
-    }
-
     delete Game::Main;
     return 0;
 }

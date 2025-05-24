@@ -26,6 +26,8 @@ protected:
     Vector2D size;
     bool isActive = true;
     bool stop_update = false;
+
+    bool to_destroy = false;
     Tween* active_tween = nullptr;
 
     int zIndex = 0;
@@ -52,6 +54,9 @@ public:
     // Throws error and returns 0 on no attribute found
     float getAttribute(const char* name);
     float getAttribute(std::string name);
+
+    void _destroy();
+    void _set_to_destroy_(bool to_destroy);
     void _set_active_tween(Tween* tween);
 
 

@@ -151,8 +151,9 @@ Game::~Game() {
 
     for (int i = 0; i < Object::workspace.Children().size(); i++) {
         if (Object::workspace.Children()[i] != nullptr)
-            Object::workspace.Children()[i]->Destroy();
+            Object::workspace.Children()[i]->_destroy();
     }
+
     ofstream settings("externals/settings");
     settings << "R " << resolution.first << " " << resolution.second << "\n";
     settings << "V " << volume << "\n";

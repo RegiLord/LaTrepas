@@ -14,7 +14,7 @@ using namespace std;
 
 QuickTime::~QuickTime() {
     if (text != nullptr)
-        text->Destroy();
+        delete text;
 }
 
 QuickTime::QuickTime(const std::string& name, const std::string& filePath, double time, Vector2D position, Vector2D size, Color colorTint)
@@ -53,9 +53,13 @@ void QuickTime::setLetter(char letter) {
     this->text->setText(string() + letter);
 }
 
+bool fast_one = false;
 void QuickTime::Update() {
     if (!isActive || stop_update) return;
     UpdateSecluded();
+    if (fast_one) {
+        fast_one = false;
+    }
     Object::Update();
 }
 

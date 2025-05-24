@@ -47,8 +47,9 @@ Object::Object(const Object& other) : ID(ObjectCounter++) {
 /// Destructorul object se afla in TweenService.cpp
 
 Object::~Object() {
-    if (active_tween != nullptr)
+    if (active_tween != nullptr) {
         active_tween->Stop();
+    }
     cout << "INFO: " << name << " Object destroyed" << endl;
 }
 void Object::_set_active_tween(Tween* tween) {
@@ -218,7 +219,7 @@ void Object::RemoveChild(const Object& child) {
 void Object::ClearChildren() {
     for (int i = 0; i < children.size(); i++)
         if (children[i] != nullptr)
-            children[i]->Destroy();
+            children[i]->_destroy();
 }
 
 
@@ -236,7 +237,10 @@ ostream& operator<<(ostream& os, const Object& obj) {
     return os;
 }
 
-void Object::Destroy() {
+void Object::Destroy() { this->_set_to_destroy_(true); }
+
+
+void Object::_destroy() {
     ClearChildren();
     if (parent != nullptr)
         parent->RemoveChild(this);
@@ -246,6 +250,10 @@ void Object::Destroy() {
 void Object::UpdateSecluded() {}
 
 void Object::Update() {
+    if (this->to_destroy) {
+        this->_destroy();
+        return;
+    }
     if (!isActive || stop_update) return;
     bool notOrdered = false;
     for (int i = 0; i < children.size(); i++) {
@@ -290,4 +298,7 @@ float Object::getAttribute(std::string name) { return getAttribute(name.c_str())
 
 bool Object::getStopUpdate() const { return stop_update; }
 void Object::setStopUpdate(bool stop_update) {this->stop_update = stop_update;}
+
+void Object::_set_to_destroy_(bool to_destroy) { this->to_destroy = to_destroy; }
+
 
