@@ -1,0 +1,66 @@
+Texture -> struct
+        -- are .width
+Sound -> struct
+Rectangle -> struct
+        -- e basically un vector de
+        -- {posx, posy, widht, height)
+Music -> struct
+Functii:
+
+
+InitAudioDevice()
+CloseAudioDevice()
+InitWindow(width, height, name)
+SetTargetFps(value) -> setam fps-ul la value
+LoadTexture(numele texturii) -> returneaza un Texture
+    -- tre sa fie png
+LoadSound(numele sunetului)
+    -- returneaza un Sound care trebuie sa fie .ogg
+LoadMusicStream(numele muzic)
+    -- returneaza un Music struct .mp3
+PlayMusicStream(Music)
+    -- in afara game loop-ului
+StopMusicStream(Music)
+UpdateMusicStream(Music)
+    -- in game loop
+-- Music streaming se refera ca nu dam upload instant la intregul file
+-- si dam scan incontinuu
+
+
+GetFrameTime() -> returneaza secundele trecute de la
+            ultimu frame
+PlaySound(Sound)...
+GetMousePosition()
+CheckColisiontPointRec(point, rect)...
+
+while (!WindowShouldClose()) {
+    Game loop=ul
+}
+CloseWindow()
+
+-- De Retinut posx, posy denota coltul din stanga sus
+BeginDrawing()
+    -- Aici o sa avem desenatu
+    -- ClearBackground(...)
+    -- DrawRectangle(.., .., .., .., ..)
+    -- DrawTexture(textura, posx, posy, color tint, etc.)
+
+EndDrawing()
+
+Input Functions
+
+IsMouseButtonPressed(MOUSE_BUTTON_LEFT)
+IsMouseButtonDown(..)
+IsMouseButtonReleased(..)
+IsMouseButtonUp(..)
+Pressed -> adevarat in frame-ul in care incepe apasatu
+Down -> adevarat in fiecare frame in care se tine apasat
+Released -> adevarata in primul frame dupa ce dam drumu
+Up -> adevarat cand down e false
+
+IsKeyPressed/Down/Released/Up
+
+//Format Culoare
+R8G8B8A8
+A este alpha value, ptr transparenta -> 255 netrasnsparent
+0 -> transparent

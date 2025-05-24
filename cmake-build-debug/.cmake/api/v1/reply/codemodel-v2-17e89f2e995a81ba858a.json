@@ -1,0 +1,138 @@
+{
+	"configurations" : 
+	[
+		{
+			"directories" : 
+			[
+				{
+					"build" : ".",
+					"childIndexes" : 
+					[
+						1,
+						2,
+						3
+					],
+					"jsonFile" : "directory-.-Debug-f5ebdc15457944623624.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.11"
+					},
+					"projectIndex" : 0,
+					"source" : ".",
+					"targetIndexes" : 
+					[
+						2
+					]
+				},
+				{
+					"build" : "Utilities",
+					"jsonFile" : "directory-Utilities-Debug-df9f0cb74b968da6f6e8.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.11"
+					},
+					"parentIndex" : 0,
+					"projectIndex" : 0,
+					"source" : "Utilities",
+					"targetIndexes" : 
+					[
+						3
+					]
+				},
+				{
+					"build" : "GUI",
+					"jsonFile" : "directory-GUI-Debug-ee5b9f41bbd9874ac768.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.11"
+					},
+					"parentIndex" : 0,
+					"projectIndex" : 0,
+					"source" : "GUI",
+					"targetIndexes" : 
+					[
+						0
+					]
+				},
+				{
+					"build" : "STDGame",
+					"jsonFile" : "directory-STDGame-Debug-5a2aa0057ebde5acd588.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.11"
+					},
+					"parentIndex" : 0,
+					"projectIndex" : 0,
+					"source" : "STDGame",
+					"targetIndexes" : 
+					[
+						1
+					]
+				}
+			],
+			"name" : "Debug",
+			"projects" : 
+			[
+				{
+					"directoryIndexes" : 
+					[
+						0,
+						1,
+						2,
+						3
+					],
+					"name" : "SadGame",
+					"targetIndexes" : 
+					[
+						0,
+						1,
+						2,
+						3
+					]
+				}
+			],
+			"targets" : 
+			[
+				{
+					"directoryIndex" : 2,
+					"id" : "GUI::@0e4c3e8d74fe2080f54e",
+					"jsonFile" : "target-GUI-Debug-21810e694d8ba56cb69d.json",
+					"name" : "GUI",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 3,
+					"id" : "STDGame::@92b5c3570edcda6382a8",
+					"jsonFile" : "target-STDGame-Debug-952b9f566909267c5feb.json",
+					"name" : "STDGame",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "SadGame::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-SadGame-Debug-a029ea29f455ff4f8c89.json",
+					"name" : "SadGame",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 1,
+					"id" : "Utilities::@e5cfef13bd836c54df78",
+					"jsonFile" : "target-Utilities-Debug-0c1e1240d4e07d2dc1d2.json",
+					"name" : "Utilities",
+					"projectIndex" : 0
+				}
+			]
+		}
+	],
+	"kind" : "codemodel",
+	"paths" : 
+	{
+		"build" : "/Users/leusteanstefan/Desktop/Anul1Sem2/POO/LaTrepas/cmake-build-debug",
+		"source" : "/Users/leusteanstefan/Desktop/Anul1Sem2/POO/LaTrepas"
+	},
+	"version" : 
+	{
+		"major" : 2,
+		"minor" : 7
+	}
+}

@@ -1,0 +1,317 @@
+#include <functional>
+#include <iostream>
+#include <string>
+#include <vector>
+#include <unordered_map>
+#include <STDGame.h>
+#include <GUI.h>
+
+using namespace std;
+/*
+ * Clase ptr proiect -> Vector2D, Object
+ * Next-> Dialogue Box
+ */
+
+/*
+ * Thing To Add :
+ * -> Harta, TileMap probabil
+ * -> movement, sa fie mai bun, poate fac si click movement
+ * -> Sa pun in foldere diferite executabilele (CMake)
+ * -> Sa fac un meniu (Preferabil sa poti schimba si aspect ratio / resolutie, dar vad cu asta)
+ * -> O clasa NPC, ar trebui s-o folosec si la dialogue pe asta
+ * -> Sa decid cum va avea loc battle
+ * -> Background Music
+ * -> Sa mai continui cu scrisul povestii
+ * -> De redefiniti player-ul + poate game
+ * -> multe altele
+ *
+ * -> De gandit idee de salvat progres
+ *  READ ABOUT VARIADIC TEMPLATES AND VARIADIC FUNTIONS
+ *
+ *  DE ADAUGAT DUPA CE INVAT EXCEPTIONS
+ *  isTextureValid in toate load-urile care sa dea throw la exception cand da gresit
+ */
+
+void CreateMainMenu(GUIContainer* MainMenu);
+void CreatePlayScreen(GUIContainer* PlayScreen);
+int main() {
+
+    Game game;
+    game.Start();
+    SetTargetFPS(60);
+
+
+    GUIContainer* MainMenu = new GUIContainer("MainMenu");
+    CreateMainMenu(MainMenu);
+    Object::workspace.addChild(MainMenu);
+
+    GUIContainer* PlayScreen = new GUIContainer("PlayScreen");
+    PlayScreen->setActive(false);
+    CreatePlayScreen(PlayScreen);
+    Object::workspace.addChild(PlayScreen);
+
+    GUIObject* Player = dynamic_cast<GUIObject*>(&PlayScreen->FindFirstChild("Player"));
+
+    Object* EnemyFolder = new Object("EnemyFolder");
+    EnemyFolder->setParent(PlayScreen);
+    EnemyFolder->setZIndex(-2);
+    Object* ProjectileFolder = new Object("ProjectileFolder");
+    ProjectileFolder->setParent(PlayScreen);
+    ProjectileFolder->setZIndex(-2);
+
+    Button& PlayButton = dynamic_cast<Button&> (MainMenu->FindFirstDescendant("PlayButton"));
+    PlayButton.addClickEvent([](Button* button) {
+        Object::workspace.FindFirstChild("MainMenu").setActive(false);
+        Object::workspace.FindFirstChild("PlayScreen").setActive(true);
+    });
+
+    Slider *TestSlider = new Slider();
+    TestSlider->setPosition(30, 30);
+    TestSlider->setMaxValue(3);
+    TestSlider->setParent(PlayScreen);
+
+    CheckBox *TestCheckBox = new CheckBox();
+    TestCheckBox->setParent(MainMenu);
+
+    double since_last_spawn = 0;
+    double enemy_cooldown = 1;
+    while (!WindowShouldClose()) {
+        Object::workspace.Update();
+
+        enemy_cooldown = TestSlider->getValue();
+        if (Object::workspace.getActive() == false)
+            break;
+
+        if (PlayScreen->getActive() == true) {
+            // Spawnam niste inamici cv de genu
+            since_last_spawn += GetFrameTime();
+
+            if (since_last_spawn >= enemy_cooldown && Player != nullptr) {
+                // cream inamici si ii bagam in enemy folder, dupa trecem prin tot enemy folder-ul si ii miscam, verificand
+                // ptr coliziune cu playerul
+
+                GUIObject* Enemy = new GUIObject("Enemy");
+                Enemy->setSize(50, 50);
+                Enemy->setPosition(GetScreenWidth() - 50, GetRandomValue(0, GetScreenHeight() - 50));
+                Enemy->setParent(EnemyFolder);
+                Enemy->setBackgroundColor(RED);
+                since_last_spawn = 0;
+            }
+
+            if (Player != nullptr)
+                for (int i = 0; i < EnemyFolder->Children().size(); i++) {
+                    GUIObject& Enemy = dynamic_cast<GUIObject&> (EnemyFolder->getChild(i));
+
+                    Enemy.setPosition(Enemy.getPosition() + Vector2D(-3, 0));
+                }
+
+            if (ProjectileFolder != nullptr)
+                for (int i = 0; i < ProjectileFolder->Children().size(); i++) {
+                    GUIObject* Projectile = dynamic_cast<GUIObject*> (&ProjectileFolder->getChild(i));
+                    Projectile->setPosition(Projectile->getPosition() + Vector2D(3, 0));
+                }
+        }
+        else
+            since_last_spawn = 0;
+
+        if (IsKeyPressed(KEY_SPACE) && Player != nullptr) {
+            GUIObject* Projectile = new GUIObject("Projectile");
+            Projectile->setSize(50, 50);
+            Projectile->setPosition(Player->getPosition()[0] + Player->getSize()[1], Player->getPosition()[1] + Player->getSize()[1] / 2 - 25);
+            Projectile->setParent(ProjectileFolder);
+            Projectile->setBackgroundColor(YELLOW);
+        }
+
+        BeginDrawing();
+            ClearBackground(RAYWHITE);
+            Object::workspace.Draw();
+        EndDrawing();
+
+            if (PlayScreen->getActive()) {
+                if (Player != nullptr)
+                    for (int i = 0; i < EnemyFolder->Children().size(); i++) {
+                        GUIObject& Enemy = dynamic_cast<GUIObject&> (EnemyFolder->getChild(i));
+                        Rectangle PlayerCollision(Player->getPosition()[0], Player->getPosition()[1]
+                            , Player->getSize()[0], Player->getSize()[1]);
+                        Rectangle EnemyCollision(Enemy.getPosition()[0], Enemy.getPosition()[1]
+                            , Enemy.getSize()[0], Enemy.getSize()[1]);
+
+                        if (CheckCollisionRecs(PlayerCollision, EnemyCollision)) {
+                            Player->Destroy();
+                            Player = nullptr;
+                            break;
+                        }
+
+                        if (Enemy.getPosition()[0] + Enemy.getSize()[0] < 0)
+                            Enemy.Destroy();
+                    }
+
+                if (ProjectileFolder != nullptr)
+                    for (int i = 0; i < ProjectileFolder->Children().size(); i++) {
+                        GUIObject* Projectile = dynamic_cast<GUIObject*> (&ProjectileFolder->getChild(i));
+
+                        if (EnemyFolder != nullptr)
+                            for (int j = 0; j < EnemyFolder->Children().size(); j++) {
+                                GUIObject* Enemy = dynamic_cast<GUIObject *> (&EnemyFolder->getChild(j));
+                                Rectangle projectile(Projectile->getPosition()[0], Projectile->getPosition()[1],
+                                    Projectile->getSize()[0], Projectile->getSize()[1]);
+                                Rectangle enemy(Enemy->getPosition()[0], Enemy->getPosition()[1],
+                                    Enemy->getSize()[0], Projectile->getSize()[1]);
+
+                                if (CheckCollisionRecs(enemy, projectile)) {
+                                    Projectile->Destroy();
+                                    Enemy->Destroy();
+                                }
+                            }
+
+                        if (Projectile->X() == GetScreenWidth()) {
+                            Projectile->Destroy();
+                        }
+                    }
+            }
+    }
+    CloseWindow();
+
+
+    for (int i = 0; i < Object::workspace.Children().size(); i++) {
+        Object::workspace.Children()[i]->Destroy();
+    }
+    return 0;
+}
+
+void CreatePlayScreen(GUIContainer* PlayScreen) {
+    PlayScreen->setBackgroundColor(LIGHTGRAY);
+
+    GUIObject* Player = new GUIObject("Player", Vector2D(0, GetScreenHeight() / 2.0f - 50), Vector2D(100, 100));
+    Player->setParent(PlayScreen);
+    Player->setBackgroundColor(ORANGE);
+
+    GUIContainer* DPAD = new GUIContainer("DPAD", Vector2D(0, 0), Vector2D(200, 200));
+    DPAD->setParent(PlayScreen);
+    DPAD->setBackgroundColor(BLANK);
+
+    // Vom crea 4 butoane numite UP, DOWN, LEFT, RIGHT, care vor muta playerul in directiile respective
+    float posX[] = {DPAD->getSize()[0] / 3, 0, DPAD->getSize()[0] / 3, 2*DPAD->getSize()[0] / 3};
+    float posY[] = {0, DPAD->getSize()[1] / 3, 2*DPAD->getSize()[1] / 3, DPAD->getSize()[0] / 3};
+    vector<string> names = {"UP", "LEFT", "DOWN", "RIGHT"};
+
+    for (int i = 0; i < 4; i++) {
+        Button* MoveButton = new Button(names[i], Vector2D(posX[i], posY[i]), Vector2D(Vector2D(1,1)*(DPAD->getSize()[0] / 3)));
+        MoveButton->setParent(DPAD);
+        MoveButton->setRoundness(0.0f);
+        MoveButton->setPressCooldown(0);
+        MoveButton->TextLabel()->setActive(false);
+        MoveButton->setHoverColor(230,230,230);
+    }
+
+    dynamic_cast<Button&> (DPAD->FindFirstChild("UP")).addClickEvent([](Button* button) {
+        Object& Found = Object::workspace.FindFirstChild("PlayScreen").FindFirstChild("Player");
+        if (Found == 0) return;
+        GUIObject& Player = dynamic_cast<GUIObject&>(Found);
+
+        if (Player.getPosition()[1] - 50 < 0)
+            Player.setPosition(Player.getPosition()[0], 0);
+        else
+            Player.setPosition(Player.getPosition() + Vector2D(0, -50));
+    });
+    dynamic_cast<Button&> (DPAD->FindFirstChild("LEFT")).addClickEvent([](Button* button) {
+        Object& Found = Object::workspace.FindFirstChild("PlayScreen").FindFirstChild("Player");
+        if (Found == 0) return;
+        GUIObject& Player = dynamic_cast<GUIObject&>(Found);
+
+        if (Player.getPosition()[0] - 50 < 0)
+            Player.setPosition(0, Player.getPosition()[1]);
+        else
+            Player.setPosition(Player.getPosition() + Vector2D(-50, 0));
+
+    });
+
+    dynamic_cast<Button&> (DPAD->FindFirstChild("DOWN")).addClickEvent([](Button* button) {
+        Object& Found = Object::workspace.FindFirstChild("PlayScreen").FindFirstChild("Player");
+        if (Found == 0) return;
+        GUIObject& Player = dynamic_cast<GUIObject&>(Found);
+
+        if (Player.getPosition()[1] + Player.getSize()[1] + 50 > GetScreenHeight())
+            Player.setPosition(Player.getPosition()[0], GetScreenHeight() - Player.getSize()[1]);
+        else
+            Player.setPosition(Player.getPosition() + Vector2D(0, 50));
+    });
+    dynamic_cast<Button&> (DPAD->FindFirstChild("RIGHT")).addClickEvent([](Button* button) {
+        Object& Found = Object::workspace.FindFirstChild("PlayScreen").FindFirstChild("Player");
+        if (Found == 0) return;
+        GUIObject& Player = dynamic_cast<GUIObject&>(Found);
+
+        if (Player.getPosition()[0] + Player.getSize()[0] + 50 > GetScreenWidth())
+            Player.setPosition(GetScreenWidth() - Player.getSize()[0], Player.getPosition()[1]);
+        else
+            Player.setPosition(Player.getPosition() + Vector2D(50, 0));
+    });
+
+    DPAD->setPosition(0, GetScreenHeight() - DPAD->getSize()[1]);
+
+    // ADAUGAM SI UN BUTON DE MENIU
+    Button* MainMenu = new Button("Main Menu");
+    MainMenu->setParent(PlayScreen);
+    MainMenu->setPosition(GetScreenWidth() - MainMenu->getSize()[0], 0);
+    MainMenu->TextLabel()->setText("Main Menu");
+    MainMenu->addClickEvent([](Button* button) {
+        Object::workspace.FindFirstChild("PlayScreen").setActive(false);
+        Object::workspace.FindFirstChild("MainMenu").setActive(true);
+    });
+}
+
+void CreateMainMenu(GUIContainer* MainMenu) {
+    MainMenu->setBackgroundColor(SKYBLUE);
+
+
+    //Putina aestetica pentru meniu
+    Object* CloudFolder = new Object("CloudFolder");
+    CloudFolder->setParent(MainMenu);
+    CloudFolder->setZIndex(-1);
+
+    int CloudNumber = GetRandomValue(5, 15);
+    for (int i = 0; i < CloudNumber; i++) {
+        Vector2D size;
+        size[0] = GetRandomValue(100, GetScreenWidth() / 3);
+        size[1] = GetRandomValue(100, GetScreenHeight() / 3);
+        Vector2D position;
+        position[0] = GetRandomValue(0, GetScreenWidth() - size[0]);
+        position[1] = GetRandomValue(0, GetScreenHeight() - size[1]);
+
+        GUIObject* Cloud = new GUIObject("Cloud", position, size);
+        Cloud->setRoundness(0.3f);
+        Cloud->setBackgroundColor(255, 255, 255, 255);
+        Cloud->setParent(CloudFolder);
+    }
+
+    GUIObject* ButtonList = new GUIObject("ButtonList");
+    ButtonList->setParent(MainMenu);
+
+    ButtonList->setSize(300, 200);
+    ButtonList->setBackgroundColor(BROWN);
+    ButtonList->setRoundness(0.5f);
+
+    float ButtonPadding = 20;
+    Button* PlayButton = new Button("PlayButton");
+    PlayButton->setParent(ButtonList);
+    PlayButton->setSize(ButtonList->getSize()[0] - 2*ButtonPadding,70);
+    PlayButton->setPosition(Vector2D(1,1)*ButtonPadding);
+    PlayButton->TextLabel()->setText("Play");
+    PlayButton->TextLabel()->setFontSize(50);
+
+    Button* ExitButton = new Button("ExitButton");
+    ExitButton->setParent(ButtonList);
+    ExitButton->setSize(ButtonList->getSize()[0] - 2*ButtonPadding,70);
+    ExitButton->setPosition(ButtonPadding, 2*ButtonPadding + PlayButton->getSize()[1]);
+    ExitButton->TextLabel()->setText("Exit");
+    ExitButton->TextLabel()->setFontSize(50);
+    ExitButton->addClickEvent([](Button* button) {
+        cout << "EXITING GAME" << endl;
+        Object::workspace.setActive(false);
+    });
+    // ADAUGAM FUNCTIONALITATEA LA PLAY BUTTON DUPA CE CREAM UN PLAY SCREEN
+    Vector2D middle(GetScreenWidth() / 2.0f, GetScreenHeight() / 2.0f);
+    ButtonList->setPosition(middle - Vector2D(ButtonList->getSize()[0] / 2.0f, ButtonList->getSize()[1] / 2.0f));
+
+    PlayButton->setNormalTexture("rsc/TestButton.png");
+}

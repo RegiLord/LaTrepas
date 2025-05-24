@@ -1,0 +1,80 @@
+[
+{
+  "directory": "/Users/leusteanstefan/Desktop/Anul1Sem2/POO/LaTrepas/cmake-build-debug",
+  "command": "/Library/Developer/CommandLineTools/usr/bin/c++ -I/Users/leusteanstefan/Desktop/Anul1Sem2/POO/LaTrepas/cmake-build-debug -I/Users/leusteanstefan/Desktop/Anul1Sem2/POO/LaTrepas/Utilities -I/Users/leusteanstefan/Desktop/Anul1Sem2/POO/LaTrepas/GUI -I/Users/leusteanstefan/Desktop/Anul1Sem2/POO/LaTrepas/STDGame -I/Users/leusteanstefan/Desktop/Anul1Sem2/POO/LaTrepas -isystem /opt/homebrew/include -g -std=gnu++2b -arch arm64 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX15.4.sdk -fcolor-diagnostics -o CMakeFiles/SadGame.dir/main.cpp.o -c /Users/leusteanstefan/Desktop/Anul1Sem2/POO/LaTrepas/main.cpp",
+  "file": "/Users/leusteanstefan/Desktop/Anul1Sem2/POO/LaTrepas/main.cpp",
+  "output": "CMakeFiles/SadGame.dir/main.cpp.o"
+},
+{
+  "directory": "/Users/leusteanstefan/Desktop/Anul1Sem2/POO/LaTrepas/cmake-build-debug",
+  "command": "/Library/Developer/CommandLineTools/usr/bin/c++ -I/Users/leusteanstefan/Desktop/Anul1Sem2/POO/LaTrepas/cmake-build-debug -isystem /opt/homebrew/include -g -std=gnu++2b -arch arm64 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX15.4.sdk -fcolor-diagnostics -o Utilities/CMakeFiles/Utilities.dir/DialogBox.h.cpp.o -c /Users/leusteanstefan/Desktop/Anul1Sem2/POO/LaTrepas/Utilities/DialogBox.h.cpp",
+  "file": "/Users/leusteanstefan/Desktop/Anul1Sem2/POO/LaTrepas/Utilities/DialogBox.h.cpp",
+  "output": "Utilities/CMakeFiles/Utilities.dir/DialogBox.h.cpp.o"
+},
+{
+  "directory": "/Users/leusteanstefan/Desktop/Anul1Sem2/POO/LaTrepas/cmake-build-debug",
+  "command": "/Library/Developer/CommandLineTools/usr/bin/c++ -I/Users/leusteanstefan/Desktop/Anul1Sem2/POO/LaTrepas/cmake-build-debug -isystem /opt/homebrew/include -g -std=gnu++2b -arch arm64 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX15.4.sdk -fcolor-diagnostics -o Utilities/CMakeFiles/Utilities.dir/Game.cpp.o -c /Users/leusteanstefan/Desktop/Anul1Sem2/POO/LaTrepas/Utilities/Game.cpp",
+  "file": "/Users/leusteanstefan/Desktop/Anul1Sem2/POO/LaTrepas/Utilities/Game.cpp",
+  "output": "Utilities/CMakeFiles/Utilities.dir/Game.cpp.o"
+},
+{
+  "directory": "/Users/leusteanstefan/Desktop/Anul1Sem2/POO/LaTrepas/cmake-build-debug",
+  "command": "/Library/Developer/CommandLineTools/usr/bin/c++ -I/Users/leusteanstefan/Desktop/Anul1Sem2/POO/LaTrepas/cmake-build-debug -isystem /opt/homebrew/include -g -std=gnu++2b -arch arm64 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX15.4.sdk -fcolor-diagnostics -o Utilities/CMakeFiles/Utilities.dir/object.h.cpp.o -c /Users/leusteanstefan/Desktop/Anul1Sem2/POO/LaTrepas/Utilities/object.h.cpp",
+  "file": "/Users/leusteanstefan/Desktop/Anul1Sem2/POO/LaTrepas/Utilities/object.h.cpp",
+  "output": "Utilities/CMakeFiles/Utilities.dir/object.h.cpp.o"
+},
+{
+  "directory": "/Users/leusteanstefan/Desktop/Anul1Sem2/POO/LaTrepas/cmake-build-debug",
+  "command": "/Library/Developer/CommandLineTools/usr/bin/c++ -I/Users/leusteanstefan/Desktop/Anul1Sem2/POO/LaTrepas/cmake-build-debug -isystem /opt/homebrew/include -g -std=gnu++2b -arch arm64 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX15.4.sdk -fcolor-diagnostics -o Utilities/CMakeFiles/Utilities.dir/Vector2D.h.cpp.o -c /Users/leusteanstefan/Desktop/Anul1Sem2/POO/LaTrepas/Utilities/Vector2D.h.cpp",
+  "file": "/Users/leusteanstefan/Desktop/Anul1Sem2/POO/LaTrepas/Utilities/Vector2D.h.cpp",
+  "output": "Utilities/CMakeFiles/Utilities.dir/Vector2D.h.cpp.o"
+},
+{
+  "directory": "/Users/leusteanstefan/Desktop/Anul1Sem2/POO/LaTrepas/cmake-build-debug",
+  "command": "/Library/Developer/CommandLineTools/usr/bin/c++ -I/Users/leusteanstefan/Desktop/Anul1Sem2/POO/LaTrepas/cmake-build-debug -isystem /opt/homebrew/include -g -std=gnu++2b -arch arm64 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX15.4.sdk -fcolor-diagnostics -o Utilities/CMakeFiles/Utilities.dir/TextHandler.cpp.o -c /Users/leusteanstefan/Desktop/Anul1Sem2/POO/LaTrepas/Utilities/TextHandler.cpp",
+  "file": "/Users/leusteanstefan/Desktop/Anul1Sem2/POO/LaTrepas/Utilities/TextHandler.cpp",
+  "output": "Utilities/CMakeFiles/Utilities.dir/TextHandler.cpp.o"
+},
+{
+  "directory": "/Users/leusteanstefan/Desktop/Anul1Sem2/POO/LaTrepas/cmake-build-debug",
+  "command": "/Library/Developer/CommandLineTools/usr/bin/c++ -I/Users/leusteanstefan/Desktop/Anul1Sem2/POO/LaTrepas/cmake-build-debug -isystem /opt/homebrew/include -g -std=gnu++2b -arch arm64 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX15.4.sdk -fcolor-diagnostics -o Utilities/CMakeFiles/Utilities.dir/TextureHandler.cpp.o -c /Users/leusteanstefan/Desktop/Anul1Sem2/POO/LaTrepas/Utilities/TextureHandler.cpp",
+  "file": "/Users/leusteanstefan/Desktop/Anul1Sem2/POO/LaTrepas/Utilities/TextureHandler.cpp",
+  "output": "Utilities/CMakeFiles/Utilities.dir/TextureHandler.cpp.o"
+},
+{
+  "directory": "/Users/leusteanstefan/Desktop/Anul1Sem2/POO/LaTrepas/cmake-build-debug",
+  "command": "/Library/Developer/CommandLineTools/usr/bin/c++ -I/Users/leusteanstefan/Desktop/Anul1Sem2/POO/LaTrepas/cmake-build-debug -isystem /opt/homebrew/include -g -std=gnu++2b -arch arm64 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX15.4.sdk -fcolor-diagnostics -o Utilities/CMakeFiles/Utilities.dir/AnimationHandler.cpp.o -c /Users/leusteanstefan/Desktop/Anul1Sem2/POO/LaTrepas/Utilities/AnimationHandler.cpp",
+  "file": "/Users/leusteanstefan/Desktop/Anul1Sem2/POO/LaTrepas/Utilities/AnimationHandler.cpp",
+  "output": "Utilities/CMakeFiles/Utilities.dir/AnimationHandler.cpp.o"
+},
+{
+  "directory": "/Users/leusteanstefan/Desktop/Anul1Sem2/POO/LaTrepas/cmake-build-debug",
+  "command": "/Library/Developer/CommandLineTools/usr/bin/c++ -I/Users/leusteanstefan/Desktop/Anul1Sem2/POO/LaTrepas/cmake-build-debug -isystem /opt/homebrew/include -g -std=gnu++2b -arch arm64 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX15.4.sdk -fcolor-diagnostics -o Utilities/CMakeFiles/Utilities.dir/TweenService.cpp.o -c /Users/leusteanstefan/Desktop/Anul1Sem2/POO/LaTrepas/Utilities/TweenService.cpp",
+  "file": "/Users/leusteanstefan/Desktop/Anul1Sem2/POO/LaTrepas/Utilities/TweenService.cpp",
+  "output": "Utilities/CMakeFiles/Utilities.dir/TweenService.cpp.o"
+},
+{
+  "directory": "/Users/leusteanstefan/Desktop/Anul1Sem2/POO/LaTrepas/cmake-build-debug",
+  "command": "/Library/Developer/CommandLineTools/usr/bin/c++ -I/Users/leusteanstefan/Desktop/Anul1Sem2/POO/LaTrepas/cmake-build-debug -I/Users/leusteanstefan/Desktop/Anul1Sem2/POO/LaTrepas/Utilities -I/Users/leusteanstefan/Desktop/Anul1Sem2/POO/LaTrepas -I/Users/leusteanstefan/Desktop/Anul1Sem2/POO/LaTrepas/GUI -isystem /opt/homebrew/include -g -std=gnu++2b -arch arm64 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX15.4.sdk -fcolor-diagnostics -o GUI/CMakeFiles/GUI.dir/GUIContainer.h.cpp.o -c /Users/leusteanstefan/Desktop/Anul1Sem2/POO/LaTrepas/GUI/GUIContainer.h.cpp",
+  "file": "/Users/leusteanstefan/Desktop/Anul1Sem2/POO/LaTrepas/GUI/GUIContainer.h.cpp",
+  "output": "GUI/CMakeFiles/GUI.dir/GUIContainer.h.cpp.o"
+},
+{
+  "directory": "/Users/leusteanstefan/Desktop/Anul1Sem2/POO/LaTrepas/cmake-build-debug",
+  "command": "/Library/Developer/CommandLineTools/usr/bin/c++ -I/Users/leusteanstefan/Desktop/Anul1Sem2/POO/LaTrepas/cmake-build-debug -I/Users/leusteanstefan/Desktop/Anul1Sem2/POO/LaTrepas/Utilities -I/Users/leusteanstefan/Desktop/Anul1Sem2/POO/LaTrepas -I/Users/leusteanstefan/Desktop/Anul1Sem2/POO/LaTrepas/GUI -isystem /opt/homebrew/include -g -std=gnu++2b -arch arm64 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX15.4.sdk -fcolor-diagnostics -o GUI/CMakeFiles/GUI.dir/GUIObject.h.cpp.o -c /Users/leusteanstefan/Desktop/Anul1Sem2/POO/LaTrepas/GUI/GUIObject.h.cpp",
+  "file": "/Users/leusteanstefan/Desktop/Anul1Sem2/POO/LaTrepas/GUI/GUIObject.h.cpp",
+  "output": "GUI/CMakeFiles/GUI.dir/GUIObject.h.cpp.o"
+},
+{
+  "directory": "/Users/leusteanstefan/Desktop/Anul1Sem2/POO/LaTrepas/cmake-build-debug",
+  "command": "/Library/Developer/CommandLineTools/usr/bin/c++ -I/Users/leusteanstefan/Desktop/Anul1Sem2/POO/LaTrepas/cmake-build-debug -I/Users/leusteanstefan/Desktop/Anul1Sem2/POO/LaTrepas/Utilities -I/Users/leusteanstefan/Desktop/Anul1Sem2/POO/LaTrepas -I/Users/leusteanstefan/Desktop/Anul1Sem2/POO/LaTrepas/GUI -isystem /opt/homebrew/include -g -std=gnu++2b -arch arm64 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX15.4.sdk -fcolor-diagnostics -o STDGame/CMakeFiles/STDGame.dir/QuickTime.cpp.o -c /Users/leusteanstefan/Desktop/Anul1Sem2/POO/LaTrepas/STDGame/QuickTime.cpp",
+  "file": "/Users/leusteanstefan/Desktop/Anul1Sem2/POO/LaTrepas/STDGame/QuickTime.cpp",
+  "output": "STDGame/CMakeFiles/STDGame.dir/QuickTime.cpp.o"
+},
+{
+  "directory": "/Users/leusteanstefan/Desktop/Anul1Sem2/POO/LaTrepas/cmake-build-debug",
+  "command": "/Library/Developer/CommandLineTools/usr/bin/c++ -I/Users/leusteanstefan/Desktop/Anul1Sem2/POO/LaTrepas/cmake-build-debug -I/Users/leusteanstefan/Desktop/Anul1Sem2/POO/LaTrepas/Utilities -I/Users/leusteanstefan/Desktop/Anul1Sem2/POO/LaTrepas -I/Users/leusteanstefan/Desktop/Anul1Sem2/POO/LaTrepas/GUI -isystem /opt/homebrew/include -g -std=gnu++2b -arch arm64 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX15.4.sdk -fcolor-diagnostics -o STDGame/CMakeFiles/STDGame.dir/Player.cpp.o -c /Users/leusteanstefan/Desktop/Anul1Sem2/POO/LaTrepas/STDGame/Player.cpp",
+  "file": "/Users/leusteanstefan/Desktop/Anul1Sem2/POO/LaTrepas/STDGame/Player.cpp",
+  "output": "STDGame/CMakeFiles/STDGame.dir/Player.cpp.o"
+}
+]

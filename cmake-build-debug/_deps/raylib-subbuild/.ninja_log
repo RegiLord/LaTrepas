@@ -1,0 +1,21 @@
+# ninja log v6
+0	19	1741604626822654746	raylib-populate-prefix/src/raylib-populate-stamp/raylib-populate-mkdir	766472fbf1fa03de
+0	19	1741604626822654746	/Users/leusteanstefan/Desktop/Anul1Sem2/POO/SnakeGame/cmake-build-debug/_deps/raylib-subbuild/raylib-populate-prefix/src/raylib-populate-stamp/raylib-populate-mkdir	766472fbf1fa03de
+19	10970	1741604637774048444	raylib-populate-prefix/src/raylib-populate-stamp/raylib-populate-download	e71ca060e67dd551
+19	10970	1741604637774048444	/Users/leusteanstefan/Desktop/Anul1Sem2/POO/SnakeGame/cmake-build-debug/_deps/raylib-subbuild/raylib-populate-prefix/src/raylib-populate-stamp/raylib-populate-download	e71ca060e67dd551
+10971	10984	1741604637787519454	raylib-populate-prefix/src/raylib-populate-stamp/raylib-populate-update	353b747a891da209
+10971	10984	1741604637787519454	/Users/leusteanstefan/Desktop/Anul1Sem2/POO/SnakeGame/cmake-build-debug/_deps/raylib-subbuild/raylib-populate-prefix/src/raylib-populate-stamp/raylib-populate-update	353b747a891da209
+10984	10997	1741604637801016840	raylib-populate-prefix/src/raylib-populate-stamp/raylib-populate-patch	754dc7ca478e3fcc
+10984	10997	1741604637801016840	/Users/leusteanstefan/Desktop/Anul1Sem2/POO/SnakeGame/cmake-build-debug/_deps/raylib-subbuild/raylib-populate-prefix/src/raylib-populate-stamp/raylib-populate-patch	754dc7ca478e3fcc
+10997	11010	1741604637813226956	raylib-populate-prefix/src/raylib-populate-stamp/raylib-populate-configure	7be268a61e69e4e4
+10997	11010	1741604637813226956	/Users/leusteanstefan/Desktop/Anul1Sem2/POO/SnakeGame/cmake-build-debug/_deps/raylib-subbuild/raylib-populate-prefix/src/raylib-populate-stamp/raylib-populate-configure	7be268a61e69e4e4
+11010	11022	1741604637825527696	raylib-populate-prefix/src/raylib-populate-stamp/raylib-populate-build	be6933344271f6b6
+11010	11022	1741604637825527696	/Users/leusteanstefan/Desktop/Anul1Sem2/POO/SnakeGame/cmake-build-debug/_deps/raylib-subbuild/raylib-populate-prefix/src/raylib-populate-stamp/raylib-populate-build	be6933344271f6b6
+11022	11034	1741604637837883268	raylib-populate-prefix/src/raylib-populate-stamp/raylib-populate-install	5442cad6640a82b1
+11022	11034	1741604637837883268	/Users/leusteanstefan/Desktop/Anul1Sem2/POO/SnakeGame/cmake-build-debug/_deps/raylib-subbuild/raylib-populate-prefix/src/raylib-populate-stamp/raylib-populate-install	5442cad6640a82b1
+11034	11047	1741604637850222799	raylib-populate-prefix/src/raylib-populate-stamp/raylib-populate-test	27ecdcee608ff01
+11034	11047	1741604637850222799	/Users/leusteanstefan/Desktop/Anul1Sem2/POO/SnakeGame/cmake-build-debug/_deps/raylib-subbuild/raylib-populate-prefix/src/raylib-populate-stamp/raylib-populate-test	27ecdcee608ff01
+11047	11064	1741604637867418827	CMakeFiles/raylib-populate-complete	51805d1c78ea7bbb
+11047	11064	1741604637867418827	raylib-populate-prefix/src/raylib-populate-stamp/raylib-populate-done	51805d1c78ea7bbb
+11047	11064	1741604637867418827	/Users/leusteanstefan/Desktop/Anul1Sem2/POO/SnakeGame/cmake-build-debug/_deps/raylib-subbuild/CMakeFiles/raylib-populate-complete	51805d1c78ea7bbb
+11047	11064	1741604637867418827	/Users/leusteanstefan/Desktop/Anul1Sem2/POO/SnakeGame/cmake-build-debug/_deps/raylib-subbuild/raylib-populate-prefix/src/raylib-populate-stamp/raylib-populate-done	51805d1c78ea7bbb

@@ -1,0 +1,147 @@
+{
+	"archive" : {},
+	"artifacts" : 
+	[
+		{
+			"path" : "STDGame/libSTDGame.a"
+		}
+	],
+	"backtrace" : 1,
+	"backtraceGraph" : 
+	{
+		"commands" : 
+		[
+			"add_library",
+			"target_link_libraries"
+		],
+		"files" : 
+		[
+			"STDGame/CMakeLists.txt"
+		],
+		"nodes" : 
+		[
+			{
+				"file" : 0
+			},
+			{
+				"command" : 0,
+				"file" : 0,
+				"line" : 7,
+				"parent" : 0
+			},
+			{
+				"command" : 1,
+				"file" : 0,
+				"line" : 13,
+				"parent" : 0
+			},
+			{
+				"command" : 1,
+				"file" : 0,
+				"line" : 14,
+				"parent" : 0
+			},
+			{
+				"command" : 1,
+				"file" : 0,
+				"line" : 12,
+				"parent" : 0
+			}
+		]
+	},
+	"compileGroups" : 
+	[
+		{
+			"compileCommandFragments" : 
+			[
+				{
+					"fragment" : "-g -std=gnu++2b -arch arm64 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX15.4.sdk -fcolor-diagnostics"
+				}
+			],
+			"includes" : 
+			[
+				{
+					"backtrace" : 2,
+					"path" : "/Users/leusteanstefan/Desktop/Anul1Sem2/POO/LaTrepas/cmake-build-debug"
+				},
+				{
+					"backtrace" : 2,
+					"path" : "/Users/leusteanstefan/Desktop/Anul1Sem2/POO/LaTrepas/Utilities"
+				},
+				{
+					"backtrace" : 2,
+					"path" : "/Users/leusteanstefan/Desktop/Anul1Sem2/POO/LaTrepas"
+				},
+				{
+					"backtrace" : 2,
+					"path" : "/Users/leusteanstefan/Desktop/Anul1Sem2/POO/LaTrepas/GUI"
+				},
+				{
+					"backtrace" : 4,
+					"isSystem" : true,
+					"path" : "/opt/homebrew/include"
+				}
+			],
+			"language" : "CXX",
+			"languageStandard" : 
+			{
+				"backtraces" : 
+				[
+					1
+				],
+				"standard" : "23"
+			},
+			"sourceIndexes" : 
+			[
+				0,
+				1
+			]
+		}
+	],
+	"dependencies" : 
+	[
+		{
+			"backtrace" : 2,
+			"id" : "GUI::@0e4c3e8d74fe2080f54e"
+		},
+		{
+			"backtrace" : 3,
+			"id" : "Utilities::@e5cfef13bd836c54df78"
+		}
+	],
+	"id" : "STDGame::@92b5c3570edcda6382a8",
+	"name" : "STDGame",
+	"nameOnDisk" : "libSTDGame.a",
+	"paths" : 
+	{
+		"build" : "STDGame",
+		"source" : "STDGame"
+	},
+	"sourceGroups" : 
+	[
+		{
+			"name" : "Source Files",
+			"sourceIndexes" : 
+			[
+				0,
+				1
+			]
+		}
+	],
+	"sources" : 
+	[
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "STDGame/QuickTime.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "STDGame/Player.cpp",
+			"sourceGroupIndex" : 0
+		}
+	],
+	"type" : "STATIC_LIBRARY"
+}
