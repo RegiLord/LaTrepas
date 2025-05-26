@@ -14,6 +14,7 @@ void SettingsMenu_settings_changed(GUIContainer*);
 void GameMenuScreenUpdateState(GUIContainer*);
 void FightScreenUpdateState(GUIContainer*);
 void SpawnQuickTimes(Object*);
+vector<Vector2D> GeneratePointZigZag_Seq(float);
 
 /*
  * MAIN MENU CONFIGURATION
@@ -311,19 +312,35 @@ void SpawnQuickTimes(Object* quicktime_folder) {
         quick_time->getAnimationHandler().AddAnimation("Attack", info);
         quick_time->setSize(80, 80);
 
-        quick_time->setPosition(GetRandomValue(0, DEFAULT_RESOLUTION.first - 80), GetRandomValue(0, DEFAULT_RESOLUTION.second - 80));
         quick_time->setLetter(GetRandomValue('A', 'Z'));
 
 
-        Vector2D point;
-        point[1] = quick_time->Y();
-        point[0] = (quick_time->X() < DEFAULT_RESOLUTION.first / 2) ? 0 : DEFAULT_RESOLUTION.first - 80;
-
+        float y = GetRandomValue(0, DEFAULT_RESOLUTION.second - 80);
+        quick_time->setPosition(0, y);
         auto tween = TweenService::GetTweenService("FightTweenService")->
-            CreateTween(quick_time, point, 1);
+            CreateTween(quick_time, GeneratePointZigZag_Seq(y), 5);
+        quick_time->setTime(5);
         tween->Play();
     }
+}
 
+vector<Vector2D> GeneratePointZigZag_Seq(float y) {
+
+    float d[] = {-100, +100, -100, +100,- 100};
+    float spacing = DEFAULT_RESOLUTION.first / 5;
+    vector<Vector2D> points;
+    for (int i = 0; i < 5; i++) {
+        Vector2D point;
+        point.setX(min(spacing * (i + 1), 1.0f*DEFAULT_RESOLUTION.first - 80));
+
+        point.setY(y + d[i]);
+        if (y + d[i] < 0)
+            point.setY(0);
+        if (y + d[i] >= DEFAULT_RESOLUTION.second - 80)
+            point.setY(DEFAULT_RESOLUTION.second - 80);
+        points.push_back(point);
+    }
+    return points;
 }
 
 /*
