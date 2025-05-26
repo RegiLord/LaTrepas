@@ -217,9 +217,14 @@ void Object::RemoveChild(const Object& child) {
 }
 
 void Object::ClearChildren() {
+    if (children.size() == 0) return;
+    cout << children.size() << endl;
     for (int i = 0; i < children.size(); i++)
-        if (children[i] != nullptr)
-            children[i]->Destroy();
+        if (children[i] != nullptr) {
+            children[i]->_destroy();
+        }
+    children.clear();
+    cout << children.size() << ":" << endl;
 }
 
 

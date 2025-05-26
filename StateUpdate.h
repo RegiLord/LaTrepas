@@ -246,12 +246,18 @@ void GameMenuScreenUpdateState(GUIContainer *GameMenuScreen) {
  */
 
 void FightScreenUpdateState(GUIContainer *FightScreen) {
+    static GameState from_where = Game::LastState;
     static bool entered = true;
-    if (entered) {
+
+    if (FightScreen->getActive() == false || FightScreen->getStopUpdate() == true)
+        from_where = Game::LastState;
+
+    if (from_where != GameMenuScreen_State && entered) {
         FightScreen->FindFirstChild("quicktime_folder")->ClearChildren();
         Player::player->setAttribute("Health", 5);
         entered = false;
     }
+
     FightScreen->setActive(true);
     FightScreen->setStopUpdate(false);
 
