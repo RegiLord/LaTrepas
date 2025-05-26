@@ -151,7 +151,9 @@ void QuickTime::DrawSecluded() {
         float radius = min(size[0], size[1]) / 4;
         float thickness = min(size[0], size[1]) / 20;
         float endangle = (current_time == 0) ? 360 : 360 - (360 / time) * current_time;
-
+        radius *= Game::Main->GetScaleFactor();
+        thickness *= Game::Main->GetScaleFactor();
+        center *= Game::Main->GetScaleFactor();
         DrawRing(center, radius, radius + thickness, 0, endangle, 0,
             ColorAlpha(text->getFontColor(), QUICKTIME_AlPHA_VALUE));
 
