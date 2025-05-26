@@ -53,6 +53,7 @@ void Tween::Play() { this->playing = true; }
 void Tween::Pause() { this->paused = true; }
 void Tween::Resume() { this->paused = false; }
 void Tween::Stop() {
+    this->object = nullptr;
     this->playing = false;
     this->distanta_parcursa = distanta_totala;
 }

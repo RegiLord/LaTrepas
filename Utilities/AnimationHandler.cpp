@@ -149,8 +149,9 @@ void AnimationHandler::Update() {
             i.second.currentTime = 0;
             if (!i.second.loop) {
                 i.second.isPlaying = false;
-                for (int j = 0; j < i.second.animation_end_callbacks.size(); j++)
+                for (int j = 0; j < i.second.animation_end_callbacks.size(); j++) {
                     i.second.animation_end_callbacks[j](owner);
+                }
             }
         }
     }

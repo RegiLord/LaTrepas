@@ -84,6 +84,13 @@ int main() {
     player->setParent(GameScreen);
     player->setSize(100, 100);
 
+    GUIObject *testKnight = new GUIObject();
+    testKnight->setParent(FightScreen);
+    testKnight->setSize(256, 320);
+    testKnight->setPosition(600, 50);
+    testKnight->setBackgroundColor(GRAY);
+
+
     while (!WindowShouldClose()) {
         Object::workspace.Update();
         switch (Game::CurrentState) {
@@ -125,11 +132,6 @@ int main() {
     // }
 
     CloseWindow();
-
-    for (auto &i : TextureHandler::Handler) {
-        cout << i.filepath << " " << i.count << endl;
-    }
-
     delete Game::Main;
     return 0;
 }

@@ -286,6 +286,8 @@ void SpawnQuickTimes(GUIContainer* FightScreen) {
         info.LoadAnimation("rsc/Pinky_Idle_Anim.png");
         info.loop = false;
         quick_time->getAnimationHandler().AddAnimation("Pop", info);
+        info.LoadAnimation("rsc/Sword_Attack_Anim.png");
+        quick_time->getAnimationHandler().AddAnimation("Attack", info);
 
         quick_time->setSize(80, 80);
 

@@ -307,7 +307,6 @@ Button::~Button() {
     TextureHandler::ReleaseTexture(onPressTexture);
     if (text != nullptr)
         delete text;
-    text = nullptr;
 }
 
 Alignment Button::getTextAlignment() const { return alignment; }
