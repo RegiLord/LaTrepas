@@ -11,24 +11,34 @@
 #include "Player.h"
 
 using namespace std;
+
+Player* Player::player;
 Player::Player() : ImageLabel("Player", "rsc/Pinky.png") {
+}
+
+Player* Player::CreatePlayer() {
+    Player* player = new Player();
     AnimInfo info;
     info.duration = 0.7;
     info.loop = true;
     info.LoadAnimation("rsc/Pinky_Idle_Anim.png");
-    anim_handler.AddAnimation("idle", info);
+    player->anim_handler.AddAnimation("idle", info);
     info.LoadAnimation("rsc/Pinky_WalkLeft_Anim.png");
-    anim_handler.AddAnimation("walkleft", info);
+    player->anim_handler.AddAnimation("walkleft", info);
     info.LoadAnimation("rsc/Pinky_WalkRight_Anim.png");
-    anim_handler.AddAnimation("walkright", info);
+    player->anim_handler.AddAnimation("walkright", info);
     info.LoadAnimation("rsc/Pinky_WalkFront_Anim.png");
-    anim_handler.AddAnimation("walkup", info);
+    player->anim_handler.AddAnimation("walkup", info);
     info.LoadAnimation("rsc/Pinky_WalkBack_Anim.png");
-    anim_handler.AddAnimation("walkdown", info);
+    player->anim_handler.AddAnimation("walkdown", info);
 
     for (int i = 0; i < 5; i++)
-        state_handler[i] = 0;
+        player->state_handler[i] = 0;
+    player->setAttribute("Health", 5);
+    player->setAttribute("Speed", 60);
+    return player;
 }
+
 
 Player::~Player() {
     if (state_handler != nullptr)
@@ -59,6 +69,7 @@ void Player::DrawSecluded() {
 
 void Player::UpdateSecluded() {
     ImageLabel::UpdateSecluded();
+    float speed = this->getAttribute("Speed");
 
     switch (state) {
         case Idle: {
@@ -136,5 +147,9 @@ void Player::UpdateSecluded() {
         this->setPosition(0, this->Y());
     if (this->X() + this->Width() > DEFAULT_RESOLUTION.first)
         this->setPosition(DEFAULT_RESOLUTION.first - this->Width(), this->Y());
+    if (this->Y() < 0)
+        this->setPosition(this->X(), 0);
+    if (this->Y() + this->Height() > DEFAULT_RESOLUTION.second)
+        this->setPosition(this->X(), DEFAULT_RESOLUTION.second - this->Height());
 
 }

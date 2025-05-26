@@ -13,7 +13,7 @@ void GameScreenUpdateState(GUIContainer*);
 void SettingsMenu_settings_changed(GUIContainer*);
 void GameMenuScreenUpdateState(GUIContainer*);
 void FightScreenUpdateState(GUIContainer*);
-void SpawnQuickTimes(GUIContainer*);
+void SpawnQuickTimes(Object*);
 
 /*
  * MAIN MENU CONFIGURATION
@@ -247,6 +247,11 @@ void GameMenuScreenUpdateState(GUIContainer *GameMenuScreen) {
  */
 
 void FightScreenUpdateState(GUIContainer *FightScreen) {
+    static bool entered = true;
+    if (entered) {
+        FightScreen->FindFirstChild("quicktime_folder")->ClearChildren();
+        entered = false;
+    }
     FightScreen->setActive(true);
     FightScreen->setStopUpdate(false);
 
@@ -254,18 +259,20 @@ void FightScreenUpdateState(GUIContainer *FightScreen) {
        (FightScreen->FindFirstChild("GameSettingsButton"));
     if (GameSettingsButton == nullptr) throw bad_cast();
 
+    SpawnQuickTimes(FightScreen->FindFirstChild("quicktime_folder"));
+
     if (GameSettingsButton->getButtonState() == Pressed) {
         GameSettingsButton->setButtonState(Normal);
         FightScreen->setStopUpdate(true);
 
         Game::LastState = Game::CurrentState;
         Game::CurrentState = GameMenuScreen_State;
+        entered = true;
     }
 
-    SpawnQuickTimes(FightScreen);
 }
 
-void SpawnQuickTimes(GUIContainer* FightScreen) {
+void SpawnQuickTimes(Object* quicktime_folder) {
     static double time_till_spawn = 1;
 
     time_till_spawn -= GetFrameTime();
@@ -273,7 +280,7 @@ void SpawnQuickTimes(GUIContainer* FightScreen) {
         time_till_spawn = 1;
 
         QuickTime* quick_time = new QuickTime("QuickTime", "rsc/Sword.png");
-        quick_time->setParent(FightScreen);
+        quick_time->setParent(quicktime_folder);
         quick_time->setZIndex(2);
         AnimInfo info;
         info.loop = true;
@@ -288,7 +295,6 @@ void SpawnQuickTimes(GUIContainer* FightScreen) {
         quick_time->getAnimationHandler().AddAnimation("Pop", info);
         info.LoadAnimation("rsc/Sword_Attack_Anim.png");
         quick_time->getAnimationHandler().AddAnimation("Attack", info);
-
         quick_time->setSize(80, 80);
 
         quick_time->setPosition(GetRandomValue(0, DEFAULT_RESOLUTION.first - 80), GetRandomValue(0, DEFAULT_RESOLUTION.second - 80));
@@ -297,7 +303,7 @@ void SpawnQuickTimes(GUIContainer* FightScreen) {
 
         Vector2D point;
         point[1] = quick_time->Y();
-        point[0] = (quick_time->X() < DEFAULT_RESOLUTION.first / 2) ? 0 : DEFAULT_RESOLUTION.first;
+        point[0] = (quick_time->X() < DEFAULT_RESOLUTION.first / 2) ? 0 : DEFAULT_RESOLUTION.first - 80;
 
         auto tween = TweenService::GetTweenService("FightTweenService")->
             CreateTween(quick_time, point, 1);

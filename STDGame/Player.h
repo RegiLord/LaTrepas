@@ -13,18 +13,20 @@ class Player : public ImageLabel {
 private:
     float *state_handler = new float[5];
     bool entering = true;
-    float speed = 600; //pixels per second
-protected:
     PlayerState state = Idle;
+    //speed is pixels per second
 
-    public:
-        Player();
-        ~Player();
-
-        void UpdateSecluded() override;
-        void DrawSecluded() override;
-        void Update() override;
-        void Draw() override;
+    Player();
+    Player(const Player&) = delete;
+    Player& operator=(const Player&) = delete;
+public:
+    static Player* player;
+    static Player* CreatePlayer();
+    ~Player();
+    void UpdateSecluded() override;
+    void DrawSecluded() override;
+    void Update() override;
+    void Draw() override;
 };
 
 

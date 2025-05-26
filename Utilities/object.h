@@ -19,6 +19,13 @@ class Tween;
 class TweenService;
 class Object;
 
+class ObjectNullptrReturned : public std::exception {
+    public:
+        void what() {
+            std::cout << "ERROR: Using object nullptr for values" << std::endl;
+        }
+};
+
 class Object {
 protected:
     std::string name;

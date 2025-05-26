@@ -134,7 +134,7 @@ Object *Object::FindFirstChild(const char *name) {
         if (to_search != children[i]->getName()) continue;
         return children[i];
     }
-    return nullptr;
+    throw ObjectNullptrReturned();
 }
 
 Object* Object::FindFirstChild(string name) {
@@ -142,7 +142,7 @@ Object* Object::FindFirstChild(string name) {
         if (name != children[i]->getName()) continue;
         return children[i];
     }
-    return nullptr;
+    throw ObjectNullptrReturned();
 }
 
 Object* Object::FindFirstChild(int id) {
@@ -150,7 +150,7 @@ Object* Object::FindFirstChild(int id) {
         if (children[i]->getID() != id) continue;
         return children[i];
     }
-    return nullptr;
+    throw ObjectNullptrReturned();
 }
 
 Object* Object::FindFirstDescendant(string name) {
@@ -168,7 +168,7 @@ Object* Object::FindFirstDescendant(string name) {
             q.push(node->children[i]);
         }
     }
-    return nullptr;
+    throw ObjectNullptrReturned();
 }
 
 Object* Object::FindFirstDescendant(const char* name) {
@@ -190,7 +190,7 @@ Object* Object::FindFirstDescendant(int id) {
             q.push(node->children[i]);
         }
     }
-    return nullptr;
+    throw ObjectNullptrReturned();
 }
 
 void Object::RemoveChild(int index) {
@@ -219,7 +219,7 @@ void Object::RemoveChild(const Object& child) {
 void Object::ClearChildren() {
     for (int i = 0; i < children.size(); i++)
         if (children[i] != nullptr)
-            children[i]->_destroy();
+            children[i]->Destroy();
 }
 
 
@@ -263,13 +263,11 @@ void Object::Update() {
             continue;
         }
         children[i]->Update();
-
         if (i != 0 && children[i - 1]->zIndex > children[i]->zIndex)
             notOrdered = true;
     }
 
     if (!notOrdered) return;
-
     sort(children.begin(), children.end(), [](Object* a, Object* b) {return a->zIndex < b->zIndex;});
 }
 
@@ -277,7 +275,10 @@ void Object::DrawSecluded() {}
 void Object::Draw() {
     if (!isActive) return;
     for (int i = 0; i < children.size(); i++) {
-        if (children[i] == nullptr) continue;
+        if (children[i] == nullptr) {
+            cout << "WARNING: object " << name << " has null children" << endl;
+            continue;
+        }
         children[i]->Draw();
     }
 }

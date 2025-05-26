@@ -79,14 +79,13 @@ int main() {
 
     TweenService::CreateTweenService("FightTweenService", FightScreen);
 
-
-    Player* player = new Player();
-    player->setParent(GameScreen);
-    player->setSize(100, 100);
+    Player::player = Player::CreatePlayer();
+    Player::player->setParent(GameScreen);
 
     GUIObject *testKnight = new GUIObject();
     testKnight->setParent(FightScreen);
     testKnight->setSize(256, 320);
+    testKnight->setZIndex(0);
     testKnight->setPosition(600, 50);
     testKnight->setBackgroundColor(GRAY);
 
@@ -329,7 +328,7 @@ void CreateGameScreen(GUIContainer *GameScreen) {
     tempButton->setParent(GameScreen);
     tempButton->setPosition(800, 0);
 
-    GameScreen->setBackgroundTexture("rsc/Erza.png");
+    GameScreen->setBackgroundColor(DARKGREEN);
 }
 
 void CreateGameMenuScreen(GUIContainer *GameMenuScreen) {
@@ -378,5 +377,9 @@ void CreateFightScreen(GUIContainer *FightScreen) {
     GameSettingsButton->TextLabel()->setActive(false);
     GameSettingsButton->setNormalTexture("rsc/Cogwheel.png");
     GameSettingsButton->setSize(64, 64);
+
+    GUIContainer* quicktime_folder = new GUIContainer("quicktime_folder");
+    quicktime_folder->setParent(FightScreen);
+    quicktime_folder->setZIndex(2);
 }
 
