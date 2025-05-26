@@ -220,8 +220,6 @@ void GameMenuScreenUpdateState(GUIContainer *GameMenuScreen) {
             }
         }
 
-
-
         Game::LastState = Game::CurrentState;
         Game::CurrentState = MainMenu_State;
     }
@@ -310,7 +308,7 @@ void SpawnQuickTimes(Object* quicktime_folder) {
         quick_time->getAnimationHandler().AddAnimation("Pop", info);
         info.LoadAnimation("rsc/Sword_Attack_Anim.png");
         quick_time->getAnimationHandler().AddAnimation("Attack", info);
-        quick_time->setSize(80, 80);
+        quick_time->setSize(120, 120);
 
         quick_time->setLetter(GetRandomValue('A', 'Z'));
 
@@ -331,13 +329,13 @@ vector<Vector2D> GeneratePointZigZag_Seq(float y) {
     vector<Vector2D> points;
     for (int i = 0; i < 5; i++) {
         Vector2D point;
-        point.setX(min(spacing * (i + 1), 1.0f*DEFAULT_RESOLUTION.first - 80));
+        point.setX(min(spacing * (i + 1), 1.0f*DEFAULT_RESOLUTION.first - 120));
 
         point.setY(y + d[i]);
         if (y + d[i] < 0)
             point.setY(0);
-        if (y + d[i] >= DEFAULT_RESOLUTION.second - 80)
-            point.setY(DEFAULT_RESOLUTION.second - 80);
+        if (y + d[i] >= DEFAULT_RESOLUTION.second - 120)
+            point.setY(DEFAULT_RESOLUTION.second - 120);
         points.push_back(point);
     }
     return points;

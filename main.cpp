@@ -82,13 +82,6 @@ int main() {
     Player::player = Player::CreatePlayer();
     Player::player->setParent(GameScreen);
 
-    GUIObject *testKnight = new GUIObject();
-    testKnight->setParent(FightScreen);
-    testKnight->setSize(256, 320);
-    testKnight->setZIndex(0);
-    testKnight->setPosition(600, 50);
-    testKnight->setBackgroundColor(GRAY);
-
 
     while (!WindowShouldClose()) {
         Object::workspace.Update();
@@ -394,5 +387,21 @@ void CreateFightScreen(GUIContainer *FightScreen) {
     healthbar->setFontColor(RED);
     healthbar->UpdateSecluded();
     healthbar->setPosition(0, DEFAULT_RESOLUTION.second - healthbar->Height());
+
+    ImageLabel *testKnight = new ImageLabel("knight");
+    testKnight->setParent(FightScreen);
+    testKnight->setSize(256, 320);
+    testKnight->setZIndex(0);
+    testKnight->setPosition(600, 50);
+    testKnight->setImageTexture("rsc/Knight.png");
+
+    ImageLabel* pinkyback = new ImageLabel("pinky");
+    pinkyback->setSize(250, 250);
+    pinkyback->setPosition(60, DEFAULT_RESOLUTION.second - pinkyback->Height() - 50);
+    pinkyback->setImageTexture("rsc/PinkyBack.png");
+    pinkyback->setParent(FightScreen);
 }
+
+
+
 
