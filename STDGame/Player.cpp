@@ -36,6 +36,9 @@ Player* Player::CreatePlayer() {
         player->state_handler[i] = 0;
     player->setAttribute("Health", 5);
     player->setAttribute("Speed", 60);
+
+    player->setPosition(DEFAULT_RESOLUTION.first / 2, DEFAULT_RESOLUTION.second / 2);
+    player->setPosition(player->position - player->size / 2);
     return player;
 }
 
@@ -70,6 +73,7 @@ void Player::DrawSecluded() {
 void Player::UpdateSecluded() {
     ImageLabel::UpdateSecluded();
     float speed = this->getAttribute("Speed");
+    float health = this->getAttribute("Health");
 
     switch (state) {
         case Idle: {
@@ -152,4 +156,12 @@ void Player::UpdateSecluded() {
     if (this->Y() + this->Height() > DEFAULT_RESOLUTION.second)
         this->setPosition(this->X(), DEFAULT_RESOLUTION.second - this->Height());
 
+}
+
+bool Player::IsDead() { return this->getAttribute("Health") <= 0; }
+
+void Player::TakeDamage() {
+    int health = this->getAttribute("Health");
+    if (health > 0) health--;
+    this->setAttribute("Health", health);
 }

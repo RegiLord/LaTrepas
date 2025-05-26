@@ -23,6 +23,9 @@ public:
     static Player* player;
     static Player* CreatePlayer();
     ~Player();
+
+    bool IsDead();
+    void TakeDamage();
     void UpdateSecluded() override;
     void DrawSecluded() override;
     void Update() override;

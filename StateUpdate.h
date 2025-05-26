@@ -250,6 +250,7 @@ void FightScreenUpdateState(GUIContainer *FightScreen) {
     static bool entered = true;
     if (entered) {
         FightScreen->FindFirstChild("quicktime_folder")->ClearChildren();
+        Player::player->setAttribute("Health", 5);
         entered = false;
     }
     FightScreen->setActive(true);
@@ -259,6 +260,12 @@ void FightScreenUpdateState(GUIContainer *FightScreen) {
        (FightScreen->FindFirstChild("GameSettingsButton"));
     if (GameSettingsButton == nullptr) throw bad_cast();
 
+    TextLabel* healthbar = dynamic_cast<TextLabel*>
+        (FightScreen->FindFirstChild("healthbar"));
+    if (healthbar == nullptr) throw bad_cast();
+
+    healthbar->setText("Health:" + to_string(int(Player::player->getAttribute("Health"))));
+
     SpawnQuickTimes(FightScreen->FindFirstChild("quicktime_folder"));
 
     if (GameSettingsButton->getButtonState() == Pressed) {
@@ -267,6 +274,13 @@ void FightScreenUpdateState(GUIContainer *FightScreen) {
 
         Game::LastState = Game::CurrentState;
         Game::CurrentState = GameMenuScreen_State;
+        entered = true;
+    }
+
+    if (Player::player->IsDead()) {
+        FightScreen->setActive(false);
+        Game::LastState = Game::CurrentState;
+        Game::CurrentState = GameScreen_State;
         entered = true;
     }
 

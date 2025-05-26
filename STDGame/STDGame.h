@@ -6,7 +6,8 @@
 #define STDGAME_H
 
 #include <raylib.h>
-#include "QuickTime.h"
 #include "Player.h"
+#include "QuickTime.h"
+
 
 #endif //STDGAME_H

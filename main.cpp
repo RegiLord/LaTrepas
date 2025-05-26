@@ -370,7 +370,13 @@ void CreateGameMenuScreen(GUIContainer *GameMenuScreen) {
 void CreateFightScreen(GUIContainer *FightScreen) {
     FightScreen->setParent(Object::workspace);
     FightScreen->setActive(false);
-    FightScreen->setBackgroundColor(YELLOW);
+    FightScreen->setBackgroundColor(DARKGREEN);
+
+    GUIObject* sky = new GUIObject("sky");
+    sky->setParent(FightScreen);
+    sky->setBackgroundColor(BLUE);
+    sky->setSize(DEFAULT_RESOLUTION.first, DEFAULT_RESOLUTION.second * 0.4);
+
 
     Button* GameSettingsButton = new Button("GameSettingsButton");
     GameSettingsButton->setParent(FightScreen);
@@ -381,5 +387,12 @@ void CreateFightScreen(GUIContainer *FightScreen) {
     GUIContainer* quicktime_folder = new GUIContainer("quicktime_folder");
     quicktime_folder->setParent(FightScreen);
     quicktime_folder->setZIndex(2);
+
+    TextLabel* healthbar = new TextLabel("healthbar");
+    healthbar->setParent(FightScreen);
+    healthbar->setText("HEALTH:5");
+    healthbar->setFontColor(RED);
+    healthbar->UpdateSecluded();
+    healthbar->setPosition(0, DEFAULT_RESOLUTION.second - healthbar->Height());
 }
 

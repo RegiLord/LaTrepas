@@ -8,7 +8,9 @@
 #include <list>
 #include <Utilities.h>
 #include <GUI.h>
+#include "Player.h"
 #include "QuickTime.h"
+
 
 using namespace std;
 
@@ -123,9 +125,11 @@ void QuickTime::UpdateSecluded() {
                 text->setActive(false);
             anim_handler.PlayAnimation("Attack");
             anim_handler.AddAnimationEndCallback("Attack", [](Object* obj) {
+                Player::player->TakeDamage();
                 obj->Destroy();
             });
         } catch (AnimationHandlerException e) {
+            Player::player->TakeDamage();
             this->Destroy();
         }
     }
