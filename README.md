@@ -11,26 +11,28 @@
   <details>
     <summary> class Object; </summary>
   I will only copy the attributes, you can see the methods in the Object.h file in the Utilities folder.\
-    ```
-  class Object {
-    protected:
-      std::string name;
-      Vector2D position;
-      Vector2D size;
-      bool isActive = true;
-      bool stop_update = false;
-  
-      bool to_destroy = false;
-      Tween* active_tween = nullptr;
-  
-      int zIndex = 0;
-      const int ID; // unique id for objects
-      Object* parent;
-      std::vector<Object*> children;
-      std::unordered_map<std::string, float> attributes;
-    public:
-      static Object workspace;
-      static Object nullObject;
-      static int ObjectCounter;
-    };```
+
+```
+class Object {
+protected:
+    std::string name;
+    Vector2D position;
+    Vector2D size;
+    bool isActive = true;
+    bool stop_update = false;
+
+    bool to_destroy = false;
+    Tween* active_tween = nullptr;
+
+    int zIndex = 0;
+    const int ID; // unique id for objects
+    Object* parent;
+    std::vector<Object*> children;
+    std::unordered_map<std::string, float> attributes;
+public:
+    static Object workspace;
+    static Object nullObject;
+    static int ObjectCounter;
+};
+```
 </details>
