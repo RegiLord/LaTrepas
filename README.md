@@ -10,7 +10,7 @@
   Every texture, image or thing you will see on the screen will be part of the Object class.
   <details>
     <summary> class Object; </summary>
-  I will only copy the attributes, you can see the methods in the Object.h file in the Utilities folder.\
+  I will only copy the attributes, you can see the methods in the Object.h file in the Utilities folder.
 
 ```
 class Object {
@@ -35,6 +35,7 @@ public:
     static int ObjectCounter;
 };
 ```
+</details>
 The Object class also has the following virtual functions.
 ```
   virtual void UpdateSecluded();
