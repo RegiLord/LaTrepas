@@ -10,7 +10,8 @@
   Every texture, image or thing you will see on the screen will be part of the Object class.
   <details>
     <summary> class Object; </summary>
-  I will only copy the attributes, you can see the methods in the Object.h file in the Utilities folder
+  I will only copy the attributes, you can see the methods in the Object.h file in the Utilities folder.\
+    ```
   class Object {
     protected:
       std::string name;
@@ -31,5 +32,5 @@
       static Object workspace;
       static Object nullObject;
       static int ObjectCounter;
-    };
+    };```
 </details>
