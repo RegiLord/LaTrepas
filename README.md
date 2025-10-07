@@ -37,6 +37,7 @@ public:
 ```
 </details>
 The Object class also has the following virtual functions.
+
 ```
   virtual void UpdateSecluded();
   virtual void Update();
