@@ -63,3 +63,5 @@ Game Objects:
   - **Player** the player is an object that can be controlled using the w,a,s and d keys that will move and play animations depending on the direction of movement.
   - **QuickTime** the *QuickTime* is the base of the combat I imagined (unfortunately it's not finished and only a very minimal beta can be played). The ideea of a *QuickTime* is that you must press the letter showed in time or else you will get damaged.
 
+&nbsp;&nbsp;&nbsp;That's about it for the Objects section, later on I will talk about what I would've changed about this sytem. Although it did the job I think it could have been better optimised. Also I forgot to add but the **Button** object has a vector of  
+## Services
