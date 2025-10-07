@@ -10,7 +10,7 @@
   Each texture, image or thing you will see on the screen will be part of the Object class.
   <details>
     <summary> class Object; </summary>
-```
+```bash
   class Object {
     protected:
       std::string name;
