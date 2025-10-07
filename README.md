@@ -45,5 +45,5 @@ The Object class also has the following virtual functions.
   virtual void Draw();
 ```
 &nbsp;&nbsp;&nbsp;The objects are represented in a hierarchy each object havin a parent and 0 or more children objects. The update method is called every frame on the *static Object workshop* (see Object class atribbutes) and after that it propagates through the hierarchy, calling update for each of it's children and then they and so on. After update the Draw method is called the same way.\
-&nbsp;&nbsp;&nbsp;The update method deals with position changes, size changes, input etc. while the draw method draws the object on the graphic interface, wheter it be an object or simply a colored rectangle.\
-&nbsp;&nbsp;&nbsp;The DrawSecluded and UpdateSecluded work the same way as the Update and Draw except they no longer propagate through the hierarchy, that means that no update is called on the children of the object.
+&nbsp;&nbsp;&nbsp;The update method deals with **position changes, size changes, input etc.** while the draw method **draws the object on the graphic interface**, whether it be an object or simply a colored rectangle.\
+&nbsp;&nbsp;&nbsp;The *DrawSecluded* and *UpdateSecluded* work the same way as the Update and Draw except they no longer propagate through the hierarchy, that means that no update is called on the children of the object.
