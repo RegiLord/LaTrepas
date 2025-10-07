@@ -41,8 +41,8 @@ public:
   <summary> Virtual Functions </summary>
   ```
   virtual void UpdateSecluded();
-    virtual void Update();
-    virtual void DrawSecluded(); 
-    virtual void Draw();
+  virtual void Update();
+  virtual void DrawSecluded(); 
+  virtual void Draw();
   ```
 </details>
