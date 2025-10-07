@@ -6,7 +6,7 @@
   - It was made in CLion
   - It uitlizez the raylib library for the graphic interface
 
-## The Base of the Project
+## The Structure of the Project
   Every texture, image or thing you will see on the screen will be part of the Object class.
   <details>
     <summary> class Object; </summary>
@@ -44,3 +44,6 @@ The Object class also has the following virtual functions.
   virtual void DrawSecluded(); 
   virtual void Draw();
 ```
+  The objects are represented in a hierarchy each object havin a parent and 0 or more children objects. The update method is called every frame on the *static Object workshop* (see Object class atribbutes) and after that it propagates through the hierarchy, calling update for each of it's children and then they and so on. After update the Draw method is called the same way.\
+  The update method deals with position changes, size changes, input etc. while the draw method draws the object on the graphic interface, wheter it be an object or simply a colored rectangle.\
+  The DrawSecluded and UpdateSecluded work the same way as the Update and Draw except they no longer propagate through the hierarchy, that means that no update is called on the children of the object.
