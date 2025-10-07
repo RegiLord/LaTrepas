@@ -35,11 +35,10 @@ public:
     static int ObjectCounter;
 };
 ```
-</details>
-  And the Object class also has the following virtual functions.
-  ```
+The Object class also has the following virtual functions.
+```
   virtual void UpdateSecluded();
   virtual void Update();
   virtual void DrawSecluded(); 
   virtual void Draw();
-  ```
+```
