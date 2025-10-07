@@ -36,3 +36,13 @@ public:
 };
 ```
 </details>
+  And the Object class also has the following virtual functions.
+<details>
+  <summary> Virtual Functions </summary>
+  ```
+  virtual void UpdateSecluded();
+    virtual void Update();
+    virtual void DrawSecluded(); 
+    virtual void Draw();
+  ```
+</details>
