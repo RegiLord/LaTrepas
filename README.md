@@ -31,9 +31,10 @@ public:
     static Object workspace;
     static Object nullObject;
     static int ObjectCounter;
-
+```
     <details> 
-      <summary> Object Method declarations.
+      <summary> Object Method declarations. </summary>
+```
     Object();
     Object(const std::string& name, Vector2D position = Vector2D(0, 0), Vector2D size = Vector2D(0, 0));
     Object(const char* name, Vector2D position = Vector2D(0, 0), Vector2D size = Vector2D(0, 0));
