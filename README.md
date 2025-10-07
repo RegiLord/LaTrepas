@@ -38,8 +38,8 @@ public:
 </details>
 The Object class also has the following virtual functions.
 ```
-virtual void UpdateSecluded();
-    virtual void Update();
-    virtual void DrawSecluded(); 
-    virtual void Draw();
+  virtual void UpdateSecluded();
+  virtual void Update();
+  virtual void DrawSecluded(); 
+  virtual void Draw();
 ```
