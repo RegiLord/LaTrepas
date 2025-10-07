@@ -7,10 +7,10 @@
   - It uitlizez the raylib library for the graphic interface
 
 ## The Base of the Project
-  Each texture, image or thing you will see on the screen will be part of the Object class.
+  Every texture, image or thing you will see on the screen will be part of the Object class.
   <details>
     <summary> class Object; </summary>
-```bash
+    ```
   class Object {
     protected:
       std::string name;
@@ -32,5 +32,5 @@
       static Object nullObject;
       static int ObjectCounter;
     }
-```
+  ```
 </details>
