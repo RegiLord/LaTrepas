@@ -101,8 +101,9 @@ I'll talk a bit about each one.
 }
 ```
 </details>
-&nbsp;&nbsp;&nbsp; I implemented the Texture Handler as an optimization when using the same texture multiple times, before I simply loaded the textures I needed when creating ImageLabels, Button etc. and ended up with multiple VRAM occupation of the same texture, for this I created the Texture Handler.
-&nbsp;&nbsp;&nbsp; The ideea is that we load the texture one time, and send out pointers to that same texture. We hold these textures in the TextureHandlerCell and everytime we delete an ImageLabel we use the ReleaseTexture function, which finds the correct TextureHandlerCell and decreases the count. When the count reaches 0 we delete the texture from vram.
+&nbsp;&nbsp;&nbsp; I implemented the Texture Handler as an optimization when using the same texture multiple times, before I simply loaded the textures I needed when creating ImageLabels, Button etc. and ended up with multiple VRAM occupation of the same texture, for this I created the Texture Handler.\
+&nbsp;&nbsp;&nbsp; The ideea is that we load the texture one time, and send out pointers to that same texture. We hold these textures in the TextureHandlerCell and everytime we delete an ImageLabel we use the ReleaseTexture function, which finds the correct TextureHandlerCell and decreases the count. When the count reaches 0 we delete the texture from vram.\
+
 > [!CAUTION]
 > The TextureHandler is not intended to be used by the programmer. They are a system optimization.
 ### Text Handler
