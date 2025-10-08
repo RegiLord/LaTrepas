@@ -14,24 +14,24 @@
 ```
 class Object {
 protected:
-    std::string name;
-    Vector2D position;
-    Vector2D size;
-    bool isActive = true;
-    bool stop_update = false;
+  std::string name;
+  Vector2D position;
+  Vector2D size;
+  bool isActive = true;
+  bool stop_update = false;
 
-    bool to_destroy = false;
-    Tween* active_tween = nullptr;
+  bool to_destroy = false;
+  Tween* active_tween = nullptr;
 
-    int zIndex = 0;
-    const int ID; // unique id for objects
-    Object* parent;
-    std::vector<Object*> children;
-    std::unordered_map<std::string, float> attributes;
+  int zIndex = 0;
+  const int ID; // unique id for objects
+  Object* parent;
+  std::vector<Object*> children;
+  std::unordered_map<std::string, float> attributes;
 public:
-    static Object workspace;
-    static Object nullObject;
-    static int ObjectCounter;
+  static Object workspace;
+  static Object nullObject;
+  static int ObjectCounter;
 };
 ```
 </details>
