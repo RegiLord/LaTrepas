@@ -79,13 +79,13 @@ I'll talk a bit about each one.
   <summary> Texture Handler Code Declarations </summary>
 ```
   
-struct TextureHandlerCell {
-    Texture2D texture;
-    std::string filepath;
-    int count;
-};
+    struct TextureHandlerCell {
+      Texture2D texture;
+      std::string filepath;
+      int count;
+    };
 
-namespace TextureHandler {
+    namespace TextureHandler {
 
     extern std::list<TextureHandlerCell> Handler;
     void CleanTextureCache();
