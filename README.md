@@ -77,8 +77,8 @@ I'll talk a bit about each one.
 ### Texture Handler
 <details>
   <summary> Texture Handler Code Declarations </summary>
+
 ```
-  
     struct TextureHandlerCell {
       Texture2D texture;
       std::string filepath;
@@ -101,7 +101,6 @@ I'll talk a bit about each one.
 
     void CopyTexture(Texture2D* &texture, Texture2D* texturetocopy);
 }
-
 ```
 </details>
   
