@@ -156,3 +156,7 @@ class AnimationHandler {
 > [!CAUTION]
 > This is not the entire class, due to size problems I've taken out the methods, please check the AnimationHandler.h in Utilities folder for entire script.
 </details>
+
+&nbsp;&nbsp;&nbsp; Used for creating, loading and playing animations (the loading relies on sprite sheets for animations). Each Object that needs animations will have an AnimationHandler component in them. I've also added callbacks for when the animations ends for future utilizations.
+&nbsp;&nbsp;&nbsp; The main attributes to remember are **bool loop** if we want to loop the animation and **double duration** for the animation length.
+
