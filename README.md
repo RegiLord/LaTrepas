@@ -78,7 +78,7 @@ I'll talk a bit about each one.
 <details>
   <summary> Texture Handler Code Declarations </summary>
 ```
-  struct TextureHandlerCell {
+struct TextureHandlerCell {
     Texture2D texture;
     std::string filepath;
     int count;
