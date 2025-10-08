@@ -160,3 +160,63 @@ class AnimationHandler {
 &nbsp;&nbsp;&nbsp; Used for creating, loading and playing animations (the loading relies on sprite sheets for animations). Each Object that needs animations will have an AnimationHandler component in them. I've also added callbacks for when the animations ends for future utilizations.
 &nbsp;&nbsp;&nbsp; The main attributes to remember are **bool loop** if we want to loop the animation and **double duration** for the animation length.
 
+### TweenService
+&nbsp;&nbsp;&nbsp; The TweenService was inspired by RobloxStudio that has it's own TweenService that is used for animating object movement. I planned more uses for it, but in the demo this service is only used in the FightScreen (the battle demo), where the **QuickEvents** move between multiple points on the screen.
+
+<details>
+  <summary> Tween Service Code Declarations </summary>
+
+```
+struct TweenInfo {
+    Object* object;
+    double duration;
+    std::vector<Vector2D> points;
+};
+class Tween {
+private:
+    Object *object;
+    double current_time, duration;
+    float distanta_totala, distanta_parcursa;
+    bool paused, playing;
+    std::vector<Vector2D> points;
+
+    Vector2D GetPositionFromDistance() const;
+    float CalculateTotalDistance();
+    void Update();
+public:
+    Tween() = default;
+    Tween(const TweenInfo& info);
+    Tween(Object* obj, const std::vector<Vector2D> &points, double duration);
+    friend TweenService;
+
+    void Play();
+    void Pause();
+    void Resume();
+    void Stop();
+};
+
+class TweenService : public Object {
+private:
+    std::vector<Tween*> tweens;
+
+public:
+    TweenService();
+
+    static std::vector<TweenService*> Services;
+    static void CreateTweenService(const std::string &name, Object* parent);
+    static TweenService* GetTweenService(const std::string &name);
+
+    Tween* CreateTween(const TweenInfo& info);
+    Tween* CreateTween(Object* object, Vector2D point, double duration);
+    Tween* CreateTween(Object* object, const std::vector<Vector2D> &points, double duration);
+    void ClearTweens();
+
+    void Update() override;
+    void UpdateSecluded() override;
+    void Draw() override;
+    void DrawSecluded() override;
+};
+```
+
+</details>
+
