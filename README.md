@@ -82,9 +82,10 @@ I'll talk a bit about each one.
     Texture2D texture;
     std::string filepath;
     int count;
-  };
+};
 
-  namespace TextureHandler {
+namespace TextureHandler {
+
     extern std::list<TextureHandlerCell> Handler;
     void CleanTextureCache();
 
@@ -98,7 +99,8 @@ I'll talk a bit about each one.
     void DeleteTexture(const std::string &filepath);
 
     void CopyTexture(Texture2D* &texture, Texture2D* texturetocopy);
-  }
+}
+
 ```
 </details>
   
