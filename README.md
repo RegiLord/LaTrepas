@@ -125,4 +125,34 @@ I'll talk a bit about each one.
 ```
 
 </details>
-  
+&nbsp;&nbsp;&nbsp; TextHandler-ul is used for the TextLabel, it reformats strings to fit in the zice, an changes the alignment of the text.
+
+### Animation Handler
+<details>
+  <summary> Animation Handler Code Declarations </summary>
+
+```
+struct AnimInfo {
+  private:
+    double currentTime = 0;
+    bool isPlaying = false;
+    Texture2D* animation = nullptr;
+
+    friend AnimationHandler;
+  public:
+    double duration = 1;
+    bool loop = false;
+    std::vector<void(*)(Object*)> animation_end_callbacks;
+};
+
+class AnimationHandler {
+    private:
+        Object* owner;
+        Texture2D* base_texture;
+        std::unordered_map<std::string, AnimInfo> animations;
+};
+```
+
+> [!CAUTION]
+> This is not the entire class, due to size problems I've taken out the methods, please check the AnimationHandler.h in Utilities folder for entire script.
+</details>
