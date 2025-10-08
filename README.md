@@ -86,20 +86,19 @@ I'll talk a bit about each one.
     };
 
     namespace TextureHandler {
-
-    extern std::list<TextureHandlerCell> Handler;
-    void CleanTextureCache();
-
-    Texture2D* CloneTexture(Texture2D* texture);
-    Texture2D* AddTexture(const std::string &filepath);
-
-    void ReleaseTexture(const std::string &filepath);
-    void ReleaseTexture(Texture2D*& texture);
-
-    void DeleteTexture(Texture2D *texture);
-    void DeleteTexture(const std::string &filepath);
-
-    void CopyTexture(Texture2D* &texture, Texture2D* texturetocopy);
+      extern std::list<TextureHandlerCell> Handler;
+      void CleanTextureCache();
+  
+      Texture2D* CloneTexture(Texture2D* texture);
+      Texture2D* AddTexture(const std::string &filepath);
+  
+      void ReleaseTexture(const std::string &filepath);
+      void ReleaseTexture(Texture2D*& texture);
+  
+      void DeleteTexture(Texture2D *texture);
+      void DeleteTexture(const std::string &filepath);
+  
+      void CopyTexture(Texture2D* &texture, Texture2D* texturetocopy);
 }
 ```
 </details>
