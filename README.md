@@ -77,29 +77,28 @@ I'll talk a bit about each one.
 ### Texture Handler
 <details>
   <summary> Texture Handler Code Declarations </summary>
-  ```
-    struct TextureHandlerCell {
-      Texture2D texture;
-      std::string filepath;
-      int count;
-    };
+```
+  struct TextureHandlerCell {
+    Texture2D texture;
+    std::string filepath;
+    int count;
+  };
 
-    namespace TextureHandler {
+  namespace TextureHandler {
+    extern std::list<TextureHandlerCell> Handler;
+    void CleanTextureCache();
 
-      extern std::list<TextureHandlerCell> Handler;
-      void CleanTextureCache();
+    Texture2D* CloneTexture(Texture2D* texture);
+    Texture2D* AddTexture(const std::string &filepath);
 
-      Texture2D* CloneTexture(Texture2D* texture);
-      Texture2D* AddTexture(const std::string &filepath);
+    void ReleaseTexture(const std::string &filepath);
+    void ReleaseTexture(Texture2D*& texture);
 
-      void ReleaseTexture(const std::string &filepath);
-      void ReleaseTexture(Texture2D*& texture);
+    void DeleteTexture(Texture2D *texture);
+    void DeleteTexture(const std::string &filepath);
 
-      void DeleteTexture(Texture2D *texture);
-      void DeleteTexture(const std::string &filepath);
-
-      void CopyTexture(Texture2D* &texture, Texture2D* texturetocopy);
-    }
-  ```
+    void CopyTexture(Texture2D* &texture, Texture2D* texturetocopy);
+  }
+```
 </details>
   
