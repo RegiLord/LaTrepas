@@ -172,6 +172,9 @@ struct TweenInfo {
     double duration;
     std::vector<Vector2D> points;
 };
+```
+
+```
 class Tween {
 private:
     Object *object;
@@ -194,7 +197,8 @@ public:
     void Resume();
     void Stop();
 };
-
+```
+```
 class TweenService : public Object {
 private:
     std::vector<Tween*> tweens;
