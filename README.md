@@ -65,3 +65,41 @@ Game Objects:
 
 &nbsp;&nbsp;&nbsp;That's about it for the Objects section, later on I will talk about what I would've changed about this sytem. Although it did the job I think it could have been better optimised. Also I forgot to add but the **Button** object has a vector of  
 ## Services
+
+&nbsp;&nbsp;&nbsp;I use the services for necessary things, such as texture optimization, animation playing and moving objects per frame, that I frequently use throughout the project.
+&nbsp;&nbsp;&nbsp;I currently have 3 services:
+  - Texture Handler
+  - Text Handler
+  - Animation Handler
+  - Tween Service
+I'll talk a bit about each one.
+
+### Texture Handler
+<details>
+  <summary> Texture Handler Code Declarations </summary>
+  ```
+    struct TextureHandlerCell {
+      Texture2D texture;
+      std::string filepath;
+      int count;
+    };
+
+    namespace TextureHandler {
+
+      extern std::list<TextureHandlerCell> Handler;
+      void CleanTextureCache();
+
+      Texture2D* CloneTexture(Texture2D* texture);
+      Texture2D* AddTexture(const std::string &filepath);
+
+      void ReleaseTexture(const std::string &filepath);
+      void ReleaseTexture(Texture2D*& texture);
+
+      void DeleteTexture(Texture2D *texture);
+      void DeleteTexture(const std::string &filepath);
+
+      void CopyTexture(Texture2D* &texture, Texture2D* texturetocopy);
+    }
+  ```
+</details>
+  
