@@ -221,6 +221,36 @@ public:
     void DrawSecluded() override;
 };
 ```
-
+> [!CAUTION]
+> These Tween declarations are located in the Object.h file due to some implementation needs.
+> The c++ implementations of the functions though are in the TweenService.cpp
 </details>
+
+&nbsp;&nbsp;&nbsp; I will try to simply explain how it works and not the code behind it. What I define as a Tween is the movement of an **Object** over **a vector of points** in a **duration** given. Of course we can also give a single point which results in a linear movement.
+- **TweenInfo** -> intended to be used by the player to create the details of the movement
+- **TweenService** -> intermediary to create a *Tween*, this is a necessary process. If we create a *Tween* without the intermediary the object will not move.
+- **Tween** -> is returned by the *TweenService*, you can think of it as the movement function created by the *TweenInfo*. It contains the details of the current time of the animation. We can also *Play(), Stop(), Resume() and Stop()* from it.
+
+&nbsp;&nbsp;&nbsp; The *Tween* is not implicitly played when created, we must use the Play() function for it to start.
+
+## Regrets and What I would've changed
+
+- **TweenService** -> I'll start with the most recent one I've talked about. You can see in the TweenService declarations that the TweenService is derived from the Object, as such tweens will not play if the TweenService is not in the hierarchy. I did not want this since I planned to implement more Services. So I should've thinked about a ServiceHandler first and the create the Services.
+- **ECS** -> Due to the small scale I thought the project would be I did not create an Entity Component System, so the creation of Objects was very repetitive. I would've like to create components such as *Position/Size(Transform), Texture, Audio etc.*. Unfortunately I had to implement by hand many of the features and then reuse them by derivation.
+- **Raylib** -> Not to be misunderstood, the library is great, however I think I relied a bit to much on it's graphic interface. I think It would've been nice to learn a bit of OpenGL in the making of the project. Though I wouldn't have made it entirely from OpenGL nor maybe even used it in the project, I'm strictly speaking from a studying perspective.
+
+I probably have more but cannot think of them at the moment.
+
+## What I planned to add
+
+- **AudioService** -> A background music module that was easy to use, to change between battle music, or adventure music, or menu music.
+- **TileMap** -> A map for exploration, for now the map is simple and quite boring.
+- **More Attacks** -> The combat system is severly lacking, only the *QuickTime* was implemented.
+- **Curvic Movement TweenService** -> It would've made the movement less direct and more enjoyable.
+- **Different Mobs** -> More enemies with different attacks and textures
+And many more, I think the project could've had more features.
+
+# Conclusions
+&nbsp;&nbsp;&nbsp;  If you've read till the end I hope you'll be interested to take a look through the code, though I do warn that some parts are quite rough. I think I'll come back to this project or maybe even rebuild from scratch when I learn more about game development and features. I'd also like to try to make it in C# and use OpenGL next time.
+
 
