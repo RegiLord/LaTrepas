@@ -109,6 +109,7 @@ I'll talk a bit about each one.
 ### Text Handler
 <details>
   <summary> Text Handler Code Declarations </summary>
+  
 ```
     enum Alignment {
       Centered, Left, Right, NoAlignment
@@ -122,5 +123,6 @@ I'll talk a bit about each one.
       void AlignLeftText(Rectangle Box, Vector2D& TextBoxPosition, Vector2D TextBoxSize);
     }
 ```
+
 </details>
   
